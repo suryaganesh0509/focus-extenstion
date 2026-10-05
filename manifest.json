@@ -1,0 +1,50 @@
+{
+  "manifest_version": 3,
+  "name": "Focus Mode Fullscreen",
+  "version": "1.0",
+  "description": "Toggle clean full-screen mode and switch tabs via shortcuts.",
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "scripting"
+  ],
+  "action": {
+    "default_title": "Toggle Focus Fullscreen",
+    "default_icon": "icon.png"
+  },
+  "icons": {
+    "128": "icon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "commands": {
+    "toggle-fullscreen": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+F",
+        "mac": "Command+Shift+F"
+      },
+      "description": "Toggle focus full-screen mode"
+    },
+    "next-tab": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Right",
+        "mac": "Command+Shift+Right"
+      },
+      "description": "Switch to next tab"
+    },
+    "prev-tab": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Left",
+        "mac": "Command+Shift+Left"
+      },
+      "description": "Switch to previous tab"
+    }
+  }
+}
